@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-[#1e2b3d] flex items-center justify-center font-sans p-4">
+    <main class="w-full max-w-xl">
+        <h1 class="text-white text-3xl sm:text-4xl font-bold text-center mb-2">Todo List</h1>
+        <p class="text-slate-300 text-center text-sm mb-5">Add, edit, search and manage your tasks</p>
+
+        <form id="todoForm" class="flex w-full h-12 mb-4">
+            <input type="text" id="taskInput" placeholder="Enter any task..." autocomplete="off"
+                class="w-full min-w-0 bg-[#60758f] text-white placeholder:text-gray-300 text-sm px-4 rounded-l-full outline-none focus:ring-2 focus:ring-[#9aaac0]">
+            <button type="submit" class="bg-[#02091c] text-white px-5 text-sm font-semibold rounded-r-full hover:bg-black transition">
+                Add
+            </button>
+        </form>
+
+        <div class="flex flex-col sm:flex-row gap-3 mb-4">
+            <input type="search" id="searchInput" placeholder="Search tasks..."
+                class="flex-1 min-w-0 bg-white/10 border border-slate-500 text-white placeholder:text-slate-300 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-slate-300">
+            <select id="filterSelect" aria-label="Filter tasks"
+                class="bg-[#60758f] text-white rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-slate-300">
+                <option value="all">All Tasks</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+
+        <div class="bg-[#9aaac0] rounded-xl p-3 sm:p-5 shadow-xl">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3 text-[#10192d]">
+                <p class="font-semibold text-sm">Your Tasks</p>
+                <p id="taskCounter" class="text-sm font-semibold" aria-live="polite">Total: 0 | Done: 0</p>
+            </div>
+
+            <div class="overflow-x-auto rounded-lg">
+                <table class="w-full border-collapse text-white text-sm">
+                    <thead>
+                        <tr class="bg-[#10192d]">
+                            <th class="text-center px-2 py-3 font-bold w-12">#</th>
+                            <th class="text-left px-3 py-3 font-bold">Details</th>
+                            <th class="text-center px-3 py-3 font-bold">Done</th>
+                            <th class="text-center px-3 py-3 font-bold">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskList"></tbody>
+                </table>
+            </div>
+
+            <p id="emptyMessage" class="text-center text-xs text-[#10192d] mt-4">No tasks yet! Add your Task first.</p>
+            <p id="noResults" class="text-center text-xs text-[#10192d] mt-4 hidden">No matching tasks found.</p>
+        </div>
+    </main>
+<script src="app.js"></script>
+    
+</body>
+</html>
